@@ -1,6 +1,7 @@
 import { FormEvent, useContext, useState } from "react"
 import { AuthContext } from "../contexts/AuthContext"
 import styles from '../styles/Home.module.scss'
+import { withSSRGuest } from "../utils/WithSSRGuest"
 
 export default function Home() {
   const [password, setPassword] = useState('')
@@ -30,3 +31,10 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = withSSRGuest(async (context) => {
+  return {
+    props: {}
+  }
+}
+)
